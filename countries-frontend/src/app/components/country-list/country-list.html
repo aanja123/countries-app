@@ -1,0 +1,40 @@
+<div class="country-list">
+  <h1>Countries</h1>
+
+  <div class="controls">
+    <input
+      type="text"
+      placeholder="Search by name..."
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onFilterChange()"
+    />
+
+    <select [(ngModel)]="selectedRegion" (ngModelChange)="onFilterChange()">
+      <option value="">All regions</option>
+      <option *ngFor="let region of regions" [value]="region">{{ region }}</option>
+    </select>
+
+    <select [(ngModel)]="sortOrder" (ngModelChange)="onFilterChange()">
+      <option value="">Name (A-Z)</option>
+      <option value="population,desc">Population (highest first)</option>
+      <option value="population,asc">Population (lowest first)</option>
+    </select>
+  </div>
+
+  <p *ngIf="loading">Loading countries...</p>
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+  <div class="grid" *ngIf="!loading && !errorMessage">
+    <a
+      class="card"
+      *ngFor="let country of countries"
+      [routerLink]="['/countries', country.code]"
+    >
+      <img [src]="country.flagUrl" [alt]="country.name + ' flag'" />
+      <h2>{{ country.name }}</h2>
+      <p>Capital: {{ country.capital || 'N/A' }}</p>
+      <p>Region: {{ country.region }}</p>
+      <p>Population: {{ country.population | number }}</p>
+    </a>
+  </div>
+</div>
