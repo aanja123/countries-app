@@ -16,18 +16,18 @@ A simple web application for browsing country information, built as a Spring Boo
 - **Backend:** Java 17, Spring Boot 4.1.1, Maven
 - **Frontend:** Angular 22, standalone components
 - **External API:** REST Countries API v5
-
+<!--
 ## Project Structure
 countries-app/
 ├── countries-backend/ Spring Boot REST API
 ├── countries-frontend/ Angular application
 └── README.md
-
+-->
 ## Prerequisites
 
 - JDK 17+
 - Node.js (LTS) and npm
-- A free API key from [restcountries.com](https://restcountries.com/) (sign up at https://restcountries.com/sign-up)
+- A free API key from [restcountries.com](https://restcountries.com/)
 
 ## Running the backend
 
