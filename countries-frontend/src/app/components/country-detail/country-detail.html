@@ -1,0 +1,34 @@
+<div class="country-detail">
+  <a routerLink="/">&larr; Back to list</a>
+
+  <p *ngIf="loading">Loading country details...</p>
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+  <div *ngIf="country && !loading">
+    <div class="header">
+      <img [src]="country.flagUrl" [alt]="country.flagAlt || (country.name + ' flag')" />
+      <div>
+        <h1>{{ country.name }}</h1>
+        <p class="official">{{ country.officialName }}</p>
+      </div>
+    </div>
+
+    <div class="facts">
+      <div><strong>Capital:</strong> {{ country.capital || 'N/A' }}</div>
+      <div><strong>Region:</strong> {{ country.region }}</div>
+      <div><strong>Subregion:</strong> {{ country.subregion || 'N/A' }}</div>
+      <div><strong>Population:</strong> {{ country.population | number }}</div>
+      <div><strong>Area:</strong> {{ country.area ? (country.area | number) + ' km²' : 'N/A' }}</div>
+      <div><strong>Languages:</strong> {{ country.languages.join(', ') || 'N/A' }}</div>
+      <div><strong>Currencies:</strong> {{ country.currencies.join(', ') || 'N/A' }}</div>
+      <div><strong>Timezones:</strong> {{ country.timezones.join(', ') || 'N/A' }}</div>
+    </div>
+
+    <div class="borders" *ngIf="country.borders.length > 0">
+      <strong>Borders:</strong>
+      <a *ngFor="let border of country.borders" [routerLink]="['/countries', border]" class="border-chip">
+        {{ border }}
+      </a>
+    </div>
+  </div>
+</div>

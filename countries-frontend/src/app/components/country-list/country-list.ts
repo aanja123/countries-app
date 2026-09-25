@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { CountrySummary } from '../../models/country.model';
@@ -23,7 +23,10 @@ export class CountryListComponent implements OnInit {
 
   regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
-  constructor(private countryService: CountryService) {}
+  constructor(
+    private countryService: CountryService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.loadCountries();
@@ -39,10 +42,12 @@ export class CountryListComponent implements OnInit {
         next: (data) => {
           this.countries = data;
           this.loading = false;
+          this.cdr.detectChanges();
         },
         error: () => {
           this.errorMessage = 'Could not load countries. Please try again later.';
           this.loading = false;
+          this.cdr.detectChanges();
         }
       });
   }
