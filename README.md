@@ -52,6 +52,11 @@ ng serve
 ```
 
 The frontend starts on **http://localhost:4200**.
+
+## Bonus Features
+
+- **Spring Cache (Caffeine):** Country data is cached server-side for 1 hour using Spring's `@Cacheable` annotation, backed by Caffeine. Caching also makes repeated requests significantly faster, since cached responses are served from memory instead of over the network.
+
 <!--
 ## API Endpoints (backend)
 
