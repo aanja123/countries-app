@@ -29,33 +29,52 @@ countries-app/
 - Node.js (LTS) and npm
 - A free API key from [restcountries.com](https://restcountries.com/)
 
-## Running the backend
+## Running the app
 
-The REST Countries API key must be provided as an environment variable.
+There are two ways to run this project: manually (each app in its own terminal), or with Docker Compose (one command, both apps).
 
+### Option 1: Manual
+
+**Prerequisites:** JDK 17+, Node.js 22+ and npm, a free API key from [restcountries.com](https://restcountries.com/).
+
+**Backend** — the REST Countries API key must be provided as an environment variable:
 ```powershell
 cd countries-backend
 $env:REST_COUNTRIES_API_KEY="your-api-key-here"
 .\mvnw.cmd spring-boot:run
 ```
+Runs on **http://localhost:8080**.
 
-The backend starts on **http://localhost:8080**.
-
-## Running the frontend
-
-In a separate terminal:
-
+**Frontend** — in a separate terminal:
 ```powershell
 cd countries-frontend
 npm install
 ng serve
 ```
+Runs on **http://localhost:4200**.
 
-The frontend starts on **http://localhost:4200**.
+### Option 2: Docker Compose
+
+**Prerequisites:** [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed and running.
+
+Set your API key as an environment variable in the terminal you'll run Docker Compose from:
+```powershell
+$env:REST_COUNTRIES_API_KEY="your-api-key-here"
+```
+
+Then, from the project root:
+```powershell
+docker compose up --build
+```
+
+This builds and starts both the backend and frontend in containers:
+- Backend: **http://localhost:8080**
+- Frontend: **http://localhost:4200**
 
 ## Bonus Features
 
 - **Spring Cache (Caffeine):** Country data is cached server-side for 1 hour using Spring's `@Cacheable` annotation, backed by Caffeine. Caching also makes repeated requests significantly faster, since cached responses are served from memory instead of over the network.
+- **Docker Compose:** One `docker compose up --build` command builds and runs both apps together — backend via a multi-stage JDK/JRE build, frontend built and served via nginx. Runs on any machine with Docker, no local Java/Node setup needed.
 
 <!--
 ## API Endpoints (backend)
