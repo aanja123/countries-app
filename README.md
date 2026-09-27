@@ -25,7 +25,7 @@ There are two ways to run this project: manually (each app in its own terminal),
 
 **Prerequisites:** JDK 17+, Node.js 22+ and npm, a free API key from [restcountries.com](https://restcountries.com/).
 
-**Backend** — the REST Countries API key must be provided as an environment variable:
+**Backend:** the REST Countries API key must be provided as an environment variable:
 ```powershell
 cd countries-backend
 $env:REST_COUNTRIES_API_KEY="your-api-key-here"
@@ -33,7 +33,7 @@ $env:REST_COUNTRIES_API_KEY="your-api-key-here"
 ```
 Runs on **http://localhost:8080**.
 
-**Frontend** — in a separate terminal:
+**Frontend:** in a separate terminal:
 ```powershell
 cd countries-frontend
 npm install
