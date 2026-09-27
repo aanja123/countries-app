@@ -42,12 +42,12 @@ export class CountryListComponent implements OnInit {
         next: (data) => {
           this.countries = data;
           this.loading = false;
-          this.cdr.detectChanges();
+          this.cdr.detectChanges(); //manually trigger repaint
         },
         error: () => {
           this.errorMessage = 'Could not load countries. Please try again later.';
           this.loading = false;
-          this.cdr.detectChanges();
+          this.cdr.detectChanges(); //manually trigger repaint
         }
       });
   }

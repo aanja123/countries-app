@@ -37,12 +37,12 @@ export class CountryDetailComponent implements OnInit {
       next: (data) => {
         this.country = data;
         this.loading = false;
-        this.cdr.detectChanges();
+        this.cdr.detectChanges(); //manually trigger repaint
       },
       error: () => {
         this.errorMessage = 'Could not load this country. It may not exist.';
         this.loading = false;
-        this.cdr.detectChanges();
+        this.cdr.detectChanges(); //manually trigger repaint
       }
     });
   }

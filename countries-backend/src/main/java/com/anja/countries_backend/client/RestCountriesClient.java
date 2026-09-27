@@ -28,6 +28,7 @@ public class RestCountriesClient {
 
     @Cacheable("countries")
     public List<RestCountryResponse> fetchAll() {
+        //Free plan returns max 100 countries per request, so we page through all results and merge them into one list.
         List<RestCountryResponse> all = new ArrayList<>();
         int offset = 0;
         boolean more = true;

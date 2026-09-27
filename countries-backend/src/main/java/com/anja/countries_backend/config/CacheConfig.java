@@ -15,6 +15,7 @@ public class CacheConfig {
 
     @Bean
     public CaffeineCacheManager cacheManager() {
+        //Caffeine supports automatic expiry which lets cached country data refresh automatically after 1 hour.
         CaffeineCacheManager manager = new CaffeineCacheManager("countries", "country");
         manager.setCaffeine(
                 Caffeine.newBuilder().expireAfterWrite(1, TimeUnit.HOURS));
